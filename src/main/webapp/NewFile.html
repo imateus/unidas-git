@@ -1,0 +1,149 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><link type="text/css" rel="stylesheet" href="/unidas/javax.faces.resource/theme.css.xhtml?ln=primefaces-admin"><link type="text/css" rel="stylesheet" href="/unidas/javax.faces.resource/fa/font-awesome.css.xhtml?ln=primefaces&amp;v=6.2"><link type="text/css" rel="stylesheet" href="/unidas/javax.faces.resource/eNorKMrMTU1LTE4ttkrOzy3Iz0vNKynWSy4uBgCDwwoX.css.xhtml?ln=omnifaces.combined&amp;v=1536327023000">
+        <title>Admin Starter</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="shortcut icon" type="image/x-icon" href="/unidas/javax.faces.resource/favicon/favicon.ico.xhtml">
+        <link rel="shortcut icon" type="image/x-icon" href="/unidas/javax.faces.resource/favicon/favicon-16x16.png.xhtml" sizes="16x16">
+        <link rel="shortcut icon" type="image/x-icon" href="/unidas/javax.faces.resource/favicon/favicon-32x32.png.xhtml" sizes="32x32">
+        <link rel="shortcut icon" type="image/x-icon" href="/unidas/javax.faces.resource/favicon/favicon-96x96.png.xhtml" sizes="96x96">
+        <link rel="shortcut icon" type="image/x-icon" href="/unidas/javax.faces.resource/favicon/favicon-144x144.png.xhtml" sizes="144x144">
+        <meta name="theme-color" content="#444">
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <style type="text/css">
+
+            /* below css hides growls in small screens and makes messages visible */
+            @media (max-width: 768px) {
+
+                body div.ui-growl {
+                    display: none;
+                }
+
+                body div.ui-messages-error {
+                    display: block;
+                }
+
+            }
+            
+           /* below css hides messages in medium/big devices and makes growl visible in such devices */
+            @media (min-width: 769px) {
+                body div.ui-growl {
+                    display: block;
+                }
+
+                body div.ui-messages-error {
+                    display: none;
+                }
+            }
+
+            body.login-page {
+                background-color: transparent;
+            }
+
+            html {
+                background: url(https://noticiahoje.net/wp-content/uploads/2016/07/estrada-1.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+				width: 100%;
+				height: auto;
+                
+            }
+        </style></head><body class="hold-transition login-page"><span id="j_idt5"></span>
+        <div id="loader" class="load-bar" style="display: none">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <div class="login-box">
+            <div class="login-logo"><a href="index.xhtml" class="ui-link ui-widget"><center><img width="300" height="auto" src="https://i.imgur.com/7qzL2Bt.png"></center></a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="box login-box-body">
+<form id="j_idt10" name="j_idt10" method="post" action="/unidas/login.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt10" value="j_idt10">
+
+                    <p class="login-box-msg">Efetue o login para iniciar sua sessão</p><div id="j_idt10:j_idt12" class="ui-messages ui-widget" aria-live="polite"></div>
+
+                    <div class="form-group has-feedback"><input id="j_idt10:j_idt14" name="j_idt10:j_idt14" type="email" placeholder="Insira seu E-mail" aria-required="true" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback"><input id="j_idt10:j_idt16" name="j_idt10:j_idt16" type="password" placeholder="Insira sua senha" aria-required="true" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all form-control" role="textbox" aria-disabled="false" aria-readonly="false">
+                        <i class="fa fa-lock form-control-feedback" style="font-size: 18px"></i>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12"><div id="j_idt10:j_idt18" class="ui-selectbooleancheckbox ui-chkbox ui-widget"><div class="ui-helper-hidden-accessible"><input id="j_idt10:j_idt18_input" name="j_idt10:j_idt18_input" type="checkbox" autocomplete="off" aria-hidden="true" aria-checked="false"></div><div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c"></span></div><span class="ui-chkbox-label">Lembrar-se</span></div>
+                        </div><img id="j_idt10:j_idt20" height="10" alt="" src="/unidas/javax.faces.resource/spacer/dot_clear.gif.xhtml?ln=primefaces&amp;v=6.2">
+                        <div class="col-xs-12"><button id="j_idt10:j_idt22" name="j_idt10:j_idt22" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only btn btn-success btn-block" onclick="PrimeFaces.bcn(this,event,[function(event){showBar()},function(event){PrimeFaces.ab({s:&quot;j_idt10:j_idt22&quot;,u:&quot;j_idt10&quot;,onco:function(xhr,status,args){if(args.validationFailed){hideBar()};}});return false;}]);" type="submit" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Acessar</span></button>
+                        </div>
+                    </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="5243614728354431791:3416110334832145463" autocomplete="off">
+</form>
+
+                <div class="social-auth-links text-center">
+                    
+                    
+                    
+                </div>
+                <!-- /.social-auth-links -->
+
+                <a href="#">Esqueci minha senha</a><br>
+                <a href="#" class="text-center">Registrar-se</a>
+
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+            <script type="text/javascript" src="/unidas/javax.faces.resource/eNorKMrMTU1LTE4ttsoqLE0tqtSHUHpZxTUFOOR0C3JK0zPzitHUJOcXpWII5Rbk56XmlYDVZhVbJabkZuaVpOYW5CSWgBQDAMnoMwQ.js.xhtml?ln=omnifaces.combined&amp;v=1536327023000"></script><script type="text/javascript">var pf=window.PrimeFaces;if(pf){pf.settings.locale='pt_BR';};
+pf.cw("Growl","widget_j_idt5",{id:"j_idt5",sticky:true,life:6000,escape:true,keepAlive:false,msgs:[]});
+pf.cw("InputText","widget_j_idt10_j_idt14",{id:"j_idt10:j_idt14"});
+pf.cw("InputText","widget_j_idt10_j_idt16",{id:"j_idt10:j_idt16"});
+pf.cw("SelectBooleanCheckbox","widget_j_idt10_j_idt18",{id:"j_idt10:j_idt18"});
+pf.cw("CommandButton","widget_j_idt10_j_idt22",{id:"j_idt10:j_idt22"});
+
+                /*<![CDATA[*/
+
+                if (false) {
+                    ripple();
+                } else if (isMobile()) {
+                    ripple();
+                }
+
+                function ripple() {
+                    var rippleElements = '.ripplelink,button.ui-button:not([class*=ui-picklist]):not([class*=ui-orderlist]),.ui-selectlistbox-item,.ui-multiselectlistbox-item,.ui-selectonemenu-label,.ui-selectcheckboxmenu,.ui-autocomplete-dropdown, .ui-autocomplete-item, .ui-splitbutton-menubutton, .ui-splitbutton button.ui-button,.input-group, .ui-selectbooleanbutton, div.ui-button,.ui-chkbox-icon, .ui-link, .form-control, .btn, .ui-sortable-column,.ui-link, .ui-tabs-nav > li,.ui-selectonemenu-trigger, .ui-accordion-header, .treeview, .sidebar-toggle, .ui-radiobutton-icon, td[role="gridcell"], .ui-selectcheckboxmenu-trigger,.ui-paginator-page, .ui-panelmenu-header > a, a#layout-setup, .control-sidebar div#restore-defaults > a, .control-sidebar div.ui-selectbooleancheckbox .ui-chkbox, .control-sidebar span.control-sidebar-subheading > label, .control-sidebar a.skin-link, button.navbar-toggle, li.dropdown > a';
+
+                    $(function () {
+                        $(document.body).off('mousedown.ripple', rippleElements)
+                            .on('mousedown.ripple', rippleElements, null, function (e) {
+                                var element = $(this);
+                                $(".ripple").remove();
+                                var posX = element.offset().left,
+                                    posY = element.offset().top,
+                                    width = element.outerWidth(),
+                                    height = element.outerHeight();
+
+                                element.prepend("<span class='ripple'></span>");
+
+
+                                if (width >= height) {
+                                    height = width;
+                                } else {
+                                    width = height;
+                                }
+                                var x = e.pageX - posX - width / 2;
+                                var y = e.pageY - posY - height / 2;
+
+                                $(".ripple").css({
+                                    width: width,
+                                    height: height,
+                                    top: y + 'px',
+                                    left: x + 'px'
+                                }).addClass("rippleEffect");
+                            });
+                    });
+                }
+                /* ]]>*/
+            ;
+</script><div id="j_idt5_container" class="ui-growl ui-widget" style="z-index: 1001;"></div>
+<div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div></body></html>

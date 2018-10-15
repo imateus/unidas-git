@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:adm="http://github.com/adminfaces"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+    <h:head>
+        <title>Unidas</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon.ico']}"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-16x16.png']}" sizes="16x16"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-32x32.png']}" sizes="32x32"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['favicon/favicon-96x96.png']}" sizes="96x96"/>
+        <link rel="manifest" href="/manifest.json"/>
+        <meta name="theme-color" content="#444"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+    </h:head>
+
+    <h:body styleClass="hold-transition login-page">
+        <div id="loader" class="load-bar" style="display: none">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <div class="login-box">
+				<div class="login-logo">
+					<a href="index.xhtml" class="ui-link ui-widget">
+						<center>
+							<img width="300" height="auto" src="https://i.imgur.com/eVXf6YD.png"></img>
+						</center>
+					</a>
+				</div>	
+				<!-- /.login-logo -->
+				<div class="box login-box-body" style="#{logonMB.style}">
+
+					<h:form rendered="#{!logonMB.esqueciSenha}">
+						<p class="login-box-msg">Efetue o login para iniciar sua
+							sessão</p>
+						<p:messages closable="true" />
+						<div class="form-group has-feedback">
+							<p:inputText value="#{logonMB.email}" type="email"
+								styleClass="form-control" placeholder="E-mail" required="true"
+								requiredMessage="E-mail obrigatório" />
+							<i class="fa fa-envelope form-control-feedback"></i>
+						</div>
+						<div class="form-group has-feedback">
+							<p:inputText value="#{logonMB.password}" type="password"
+								styleClass="form-control" placeholder="Senha" required="true"
+								requiredMessage="Senha obrigatória" />
+							<i class="fa fa-lock form-control-feedback"
+								style="font-size: 18px;"></i>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<p:selectBooleanCheckbox itemLabel="Lembrar-se"
+									value="#{logonMB.remember}" rendered="#{!logonMB.esqueciSenha}" />
+							</div>
+							<p:spacer height="10" />
+							<div class="col-xs-12">
+								<p:commandButton styleClass="btn btn-success btn-block"
+									action="#{logonMB.login}" onclick="showBar()"
+									oncomplete="if(args.validationFailed){hideBar()}"
+									value="Acessar" update="@form"
+									rendered="#{!logonMB.esqueciSenha}" />
+							</div>
+						</div>
+						<br />
+						<h:commandLink action="#{logonMB.showEsqueciSenha}"
+							value="Esqueci minha senha" rendered="#{!logonMB.esqueciSenha}" update="@form"/>
+						<br />
+						<h:commandLink value="Manter-se connectado"
+							rendered="#{!logonMB.esqueciSenha}" />
+					</h:form>
+					<h:form rendered="#{logonMB.esqueciSenha}">
+						<p class="login-box-msg"> Digite o E-mail para envio da senha</p>
+						<div class="form-group has-feedback">
+							<p:inputText value="#{logonMB.email}" type="email"
+										 styleClass="form-control" 
+										 placeholder="E-mail" 
+										 required="true"
+										 requiredMessage="E-mail"
+										 rendered="#{logonMB.esqueciSenha}"/>
+							<i class="fa fa-envelope form-control-feedback"></i>
+						</div>
+						<div class="col-xs-12">
+								<p:commandButton styleClass="btn btn-success btn-block"
+												 action="#{logonMB.enviarSenha}"
+												 onclick="showBar()"
+											  	 oncomplete="if(args.validationFailed){hideBar()}"
+												 value="Enviar" 
+												 update="@form"
+												 rendered="#{logonMB.esqueciSenha}"/>
+												 
+								<p:commandButton styleClass="btn btn-success btn-block"
+												 action="#{logonMB.showLogin}"
+												 onclick="showBar()"
+											  	 oncomplete="if(args.validationFailed){hideBar()}"
+												 value="Efetuar Login" 
+												 update="@form"
+												 rendered="#{logonMB.esqueciSenha}"/>
+							</div>
+					</h:form>
+				</div>
+				<!-- /.login-box-body -->
+			</div>
+			<adm:ripple />
+        <h:outputScript library="js" name="admintemplate.js" target="head"/>
+
+        <style type="text/css">  			
+            body .load-bar {
+                margin-top: -20px;
+            }
+
+            body.login-page {
+                background-color: transparent;
+            }
+
+            html {
+                background: url(https://media.ginijony.com/wp-content/uploads/2017/08/Road-Field-Horizon-Mountains-Clouds-Sky-1920x1080.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+				width: 100%;
+				height: auto;
+                
+            }
+            
+            #teste{
+            	 height: 215px;
+            }
+		</style>
+    </h:body>
+</f:view>
+</html>	
