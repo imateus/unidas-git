@@ -142,4 +142,9 @@ public class UsuarioService {
     	}    	
 		return "Senha enviada com sucesso!";    	
     }
+    
+    public Usuario findByEmail(String email) {
+    	return dao.findByEmail(email);
+    }
+    
 }

@@ -14,7 +14,17 @@
             }
             .ui-carousel-header-title {
                 font-size: 35px !important;
+                color: #005b9e !important;
             }
+            
+            .ui-md-6 {
+            	width: 100% !important;
+            	font-size: 15px !important;
+            	font-weight:normal !important;
+            	color: #005b9e;
+            }
+            
+            
         </style>
     </ui:define>
 
@@ -28,16 +38,17 @@
 					<f:facet name="header">
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
+					
+					<h:outputText value="#{grupo.descrição}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.nome}" />
 
-					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.nome}" />
-
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descrição}" />
-
-					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
-
+					<br/>
+					<p:button value="Detalhes" icon="fa fa-plus" styleClass="btn-primary"></p:button>
+					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>

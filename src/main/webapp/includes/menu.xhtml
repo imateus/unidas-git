@@ -11,9 +11,13 @@
             </p:link>
         </li>
         <li>
-            <p:link outcome="/usuario-form.jsf">
+            <p:link outcome="/usuario-form.jsf" rendered="#{logonMB.currentUser != null}">
                 <i class="fa fa-user"></i>
                 <span>Editar Cadastro</span>
+            </p:link>
+           <p:link outcome="/usuario-form.jsf" rendered="#{logonMB.currentUser == null}">
+                <i class="fa fa-user"></i>
+                <span>Novo Cadastro</span>
             </p:link>
         </li> 
         <li>

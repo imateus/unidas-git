@@ -28,7 +28,8 @@
      </ui:define>
 
     <ui:define name="top-menu">
-        <ui:include src="/includes/top-bar.xhtml"/>
+    #{logonMB.currentUser}
+        <ui:include src="#{logonMB.currentUser != null ? '/includes/top-bar.xhtml' : '/includes/top-bar-nao-logado.xhtml'}"/>
     </ui:define>
     
     <!-- below is just an example on how to define more tabs for control sidebar --> 

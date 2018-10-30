@@ -31,7 +31,7 @@
      </ui:define>
 
     <ui:define name="top-menu">
-        <ui:include src="/includes/top-bar.xhtml"/>
+        <ui:include src="#{logonMB.currentUser != null ? '/includes/top-bar.xhtml' : '/includes/top-bar-nao-logado.xhtml'}"/>
     </ui:define>
     
     <!-- below is just an example on how to define more tabs for control sidebar --> 
@@ -48,7 +48,7 @@
     <ui:define name="footer">
           <a target="_blank"
            href="https://github.com/adminfaces/">
-            Copyright (C) 2017 - AdminFaces
+            Copyright (C) 2018 - OSK
         </a>
 
         <div class="pull-right hidden-xs" style="color: gray">

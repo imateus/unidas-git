@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.github.adminfaces.starter.entity.Usuario;
@@ -110,24 +111,32 @@ public class UsuarioDAO {
 	}
 	
 	public void save(Usuario usuario) {
-		Session session = connectionFactory.getSession();
+		Transaction tx;
+		Session session = connectionFactory.getSession();	
+		tx = session.beginTransaction();
 		try {
-			session.save(usuario);
+			session.saveOrUpdate(usuario);
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
+			tx.commit();
 			session.close();
 		}
 		
 	}
 	
 	public void delete(Usuario usuario) {
+		Transaction tx;
 		Session session = connectionFactory.getSession();
+		tx = session.beginTransaction();
 		try {
 			session.delete(usuario);
 		} catch (Exception e) {
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
+			tx.commit();
 			session.close();
 		}
 		
