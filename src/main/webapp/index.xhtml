@@ -6,7 +6,11 @@
                 template="#{layoutMB.template}">
 
     <ui:param name="renderBreadCrumb" value="false"/>
-
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	
     <ui:define name="title">
             	
      	<h4>Local de Retirada                                                             

@@ -18,7 +18,7 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 	private String nome;
 
 	@Column(name = "estrangeiro")
-	private String estrangeiro;
+	private boolean estrangeiro;
 
 	@Column(name = "data_nascimento")
 	private Date dataNascimento;
@@ -60,11 +60,11 @@ public class Usuario implements Serializable, Comparable<Usuario> {
 		this.nome = nome;
 	}
 
-	public String getEstrangeiro() {
+	public boolean isEstrangeiro() {
 		return estrangeiro;
 	}
 
-	public void setEstrangeiro(String estrangeiro) {
+	public void setEstrangeiro(boolean estrangeiro) {
 		this.estrangeiro = estrangeiro;
 	}
 

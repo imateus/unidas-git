@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,7 +31,6 @@ public class UsuarioFormMB implements Serializable {
 	private Integer id;
     private Usuario usuario;
     private String email;
-    
     private LogonMB logonMB;
     
     @Inject
@@ -82,7 +82,12 @@ public class UsuarioFormMB implements Serializable {
 
     public void save() throws IOException, SQLException {
         String msg;
-        if (usuario.getId() == null) {
+        
+        if (!validaCadastro()) {
+			return;
+		}
+        
+        if (usuario.getId() == null) {        	
         	usuario.setId(null);
         	UsuarioService.saveOrUpdate(usuario);
         	
@@ -92,15 +97,64 @@ public class UsuarioFormMB implements Serializable {
             addDetailMessage("Logged in successfully as <b>" + usuario.getEmail() + "</b>");
             Faces.getExternalContext().getFlash().setKeepMessages(true);
             Faces.redirect(adminConfig.getIndexPage());        	
-        	msg = "Usuario " + usuario.getNome() + " Salvo com sucesso"; 
+        	msg = "Usuário " + usuario.getNome() + " salvo com sucesso"; 
        } else {
             UsuarioService.saveOrUpdate(usuario);
-            msg = "Usuario " + usuario.getNome() + " Alterado com sucesso";
+            msg = "Usuário " + usuario.getNome() + " alterado com sucesso";
         }
-        addDetailMessage(msg);
-        Faces.refresh();
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, msg));
     }
-
+    
+    private boolean validaCadastro() {
+    	if (usuario.getNome() == null || usuario.getNome().isEmpty()) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento do Nome é obrigatório"));
+			return false;
+		}
+    	
+    	if (usuario.getSenha() == null || usuario.getSenha().isEmpty()) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento da senha é obrigatório"));
+			return false;
+		}
+    	
+    	if (usuario.getDataNascimento() == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento da Data de Nascimento é o obrigatório"));
+			return false;
+		}
+    	
+       	if (usuario.getCategoriaCnh() == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento da Categoria da CNH é o obrigatório"));
+			return false;
+		}
+       	
+       	if (usuario.getGenero() == null  || usuario.getSenha().isEmpty()) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento do Gênero é o obrigatório"));
+			return false;
+		}
+       	
+       	if (usuario.getEmail() == null  || usuario.getSenha().isEmpty()) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento do Email é o obrigatório"));
+			return false;
+		}
+       	
+       	if (usuario.getNumeroCnh() == null  || usuario.getSenha().isEmpty()) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento do Número da CNH é o obrigatório"));
+			return false;
+		}
+       	
+       	if (usuario.getValidadeCnh() == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento da Validade da CNH é o obrigatório"));
+			return false;
+		}
+    	
+       	if (usuario.isEstrangeiro() && (usuario.getPassaporte() == null  || usuario.getSenha().isEmpty())) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Preenchimento do Passaporte é o obrigatório"));
+			return false;
+		}
+       	
+    	return true;
+    }
+    
     public void clear() {
     	usuario = new Usuario();
         id = null;
@@ -117,7 +171,5 @@ public class UsuarioFormMB implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 }

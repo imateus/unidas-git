@@ -80,16 +80,20 @@
 							<p:outputLabel value="Senha" for="inptSenha" />
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:inputText id="inptSenha"
+							<p:password id="inptSenha"
 								value="#{usuarioFormMB.usuario.senha}" />
-						</div>
+						</div>				
 						
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
-							<p:outputLabel value="Estrangeiro" for="inptEstrangeiro" />
+							<p:outputLabel value="Estrangeiro" />	
 						</div>
+						
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:inputText id="inptEstrangeiro"
-								value="#{usuarioFormMB.usuario.estrangeiro}" />
+							<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						        <p:selectBooleanButton id="estrangeiro" value="#{usuarioFormMB.usuario.estrangeiro}" onLabel="Sim" offLabel="Não" style="width:60px">
+						        	<p:ajax update="@form"/>
+						        </p:selectBooleanButton>					 
+					    	</h:panelGrid>
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
@@ -130,16 +134,19 @@
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<p:inputText id="inptGenero"
 								value="#{usuarioFormMB.usuario.genero}" />
-						</div>
-						
-						
+						</div>											
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
-							<p:outputLabel value="Passaporte" for="inptPassaporte" />
+							<h:panelGroup id="pnlPassaporteLabel" rendered="#{usuarioFormMB.usuario.estrangeiro == true}">
+								<p:outputLabel value="Passaporte" for="inptPassaporte" />
+							</h:panelGroup>								
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:inputText id="inptPassaporte"
+							<h:panelGroup id="pnlPassaporteInput" rendered="#{usuarioFormMB.usuario.estrangeiro == true}">
+								<p:inputText id="inptPassaporte"
 								value="#{usuarioFormMB.usuario.passaporte}" />
-						</div>						
+							</h:panelGroup>
+						</div>
+																
 					</div>
                 </div>
             </div>
