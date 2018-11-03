@@ -18,6 +18,12 @@
         <h:outputStylesheet library="css" name="starter.css"/>
     </ui:define>
 
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	
+
     <ui:define name="logo">
         Unidas
     </ui:define>
@@ -30,7 +36,7 @@
          <ui:include src="/includes/menu.xhtml"/>
      </ui:define>
 
-    <ui:define name="top-menu">
+    <ui:define name="top-menu" id="top-menu" >
         <ui:include src="/includes/top-bar.xhtml"/>
     </ui:define>
     
@@ -48,7 +54,7 @@
     <ui:define name="footer">
           <a target="_blank"
            href="https://github.com/adminfaces/">
-            Copyright (C) 2017 - AdminFaces
+            Copyright (C) 2018 - OSK
         </a>
 
         <div class="pull-right hidden-xs" style="color: gray">

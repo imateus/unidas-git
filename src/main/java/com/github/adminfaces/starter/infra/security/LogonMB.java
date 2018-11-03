@@ -42,6 +42,8 @@ public class LogonMB extends AdminSession implements Serializable {
     public void init() {
     	esqueciSenha = false;
     	style = new String();
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	currentUser = (String) context.getExternalContext().getSessionMap().get("email");
     }
     
     public void login() throws IOException, SQLException {
@@ -49,11 +51,12 @@ public class LogonMB extends AdminSession implements Serializable {
     	if(!loginValidade()) {
     		return;
     	}
-    	
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	context.getExternalContext().getSessionMap().put("email", email);
     	currentUser = email;
         addDetailMessage("Logged in successfully as <b>" + email + "</b>");
         Faces.getExternalContext().getFlash().setKeepMessages(true);
-        Faces.redirect(adminConfig.getIndexPage());        
+        Faces.redirect(adminConfig.getIndexPage()); 
     }
 
     public void showEsqueciSenha() {

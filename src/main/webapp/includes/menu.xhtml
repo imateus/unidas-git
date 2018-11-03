@@ -10,26 +10,21 @@
                 <span>Home</span>
             </p:link>
         </li>
-       <li>
-            <p:link outcome="/index.jsf" onclick="clearBreadCrumbs()">
-                <i class="fa fa-th-large"></i>
-                <span>Grupos de carros</span>
-            </p:link>
-        </li>
-        <li class="header">
-            Área Administrativa
-        </li>
         <li>
-            <p:link outcome="/car-list.jsf">
-                <i class="fa fa-car"></i>
-                <span>Carros</span>
-            </p:link>
-        </li>
-        <li>
-            <p:link outcome="/usuario-list.jsf">
+            <p:link outcome="/usuario-form.jsf" rendered="#{logonMB.currentUser != null}">
                 <i class="fa fa-user"></i>
-                <span>Usuários</span>
+                <span>Editar Cadastro</span>
             </p:link>
-        </li>
-    </ul>
+           <p:link outcome="/usuario-form.jsf" rendered="#{logonMB.currentUser == null}">
+                <i class="fa fa-user"></i>
+                <span>Novo Cadastro</span>
+            </p:link>
+        </li> 
+        <li>
+        	<p:link outcome="/grupo-carros.jsf">
+				<i class="fa fa-car"></i>
+				<span>Grupos de carros</span>
+			</p:link>
+		</li>
+	</ul>
 </ui:composition>

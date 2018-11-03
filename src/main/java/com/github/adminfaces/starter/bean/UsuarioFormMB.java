@@ -5,7 +5,9 @@ import static com.github.adminfaces.template.util.Assert.has;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
 
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,23 +15,39 @@ import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Faces;
 
 import com.github.adminfaces.starter.entity.Usuario;
+import com.github.adminfaces.starter.infra.security.LogonMB;
 import com.github.adminfaces.starter.service.UsuarioService;
+import com.github.adminfaces.template.config.AdminConfig;
 
 @Named
 @ViewScoped
 public class UsuarioFormMB implements Serializable {
 
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
     private Usuario usuario;
+    private String email;
+    
+    private LogonMB logonMB;
+    
+    @Inject
+    private AdminConfig adminConfig;
 
     private UsuarioService UsuarioService = new UsuarioService();
 
     public void init() {
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	
+    	email = (String) context.getExternalContext().getSessionMap().get("email");
+    	
         if(Faces.isAjaxRequest()){
            return;
         }
-        if (has(id)) {
-        	usuario = UsuarioService.findById(id);
+        if (email != null) {
+        	usuario = UsuarioService.findByEmail(email);
         } else {
         	usuario = new Usuario();
         }
@@ -62,17 +80,25 @@ public class UsuarioFormMB implements Serializable {
         }
     }
 
-    public void save() {
+    public void save() throws IOException, SQLException {
         String msg;
-        /*if (usuario.getId() == null) {*/
+        if (usuario.getId() == null) {
         	usuario.setId(null);
         	UsuarioService.saveOrUpdate(usuario);
-            msg = "Usuario " + usuario.getNome() + " Salvo com sucesso";
-       /* } else {
+        	
+        	/**Efetua login após cadastro*/
+        	FacesContext context = FacesContext.getCurrentInstance();
+        	context.getExternalContext().getSessionMap().put("email", usuario.getEmail());
+            addDetailMessage("Logged in successfully as <b>" + usuario.getEmail() + "</b>");
+            Faces.getExternalContext().getFlash().setKeepMessages(true);
+            Faces.redirect(adminConfig.getIndexPage());        	
+        	msg = "Usuario " + usuario.getNome() + " Salvo com sucesso"; 
+       } else {
             UsuarioService.saveOrUpdate(usuario);
             msg = "Usuario " + usuario.getNome() + " Alterado com sucesso";
-        }*/
+        }
         addDetailMessage(msg);
+        Faces.refresh();
     }
 
     public void clear() {
@@ -83,6 +109,15 @@ public class UsuarioFormMB implements Serializable {
     public boolean isNew() {
         return usuario == null || usuario.getId() == null;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 
 }

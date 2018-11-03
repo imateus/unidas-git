@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:adm="http://github.com/adminfaces"
+                template="#{layoutMB.template}">
+
+    <ui:param name="title" value="Grupos de Carros"/> <!-- Automatic create breadCrumb and page title when param 'title' is provided. --> 
+
+    <ui:define name="head-end">
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+            .ui-carousel-header-title {
+                font-size: 35px !important;
+                color: #005b9e !important;
+            }
+            
+            .ui-md-6 {
+            	width: 100% !important;
+            	font-size: 15px !important;
+            	font-weight:normal !important;
+            	color: #005b9e;
+            }
+            
+            
+        </style>
+    </ui:define>
+
+	<ui:define name="body">
+		<h:form id="form">
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Econômico"
+				var="grupo" itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<img id="img1" src="#{grupo.foto}"></img>
+					</f:facet>
+					
+					<h:outputText value="#{grupo.descrição}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.nome}" />
+
+					<h:outputText value="#{grupo.nomeCarros}"/>
+					<br/>
+					<p:button value="Detalhes" icon="fa fa-plus" styleClass="btn-primary"></p:button>
+					
+				</p:panelGrid>
+			</p:carousel>
+			<br/><br/>
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Intermediário"
+				var="grupo" itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<img id="img1" src="#{grupo.foto}"></img>
+					</f:facet>
+
+					<h:outputText value="Grupo:" />
+					<h:outputText value="#{grupo.nome}" />
+
+					<h:outputText value="Descrição: " />
+					<h:outputText value="#{grupo.descrição}" />
+
+					<h:outputText value="Carros: " />
+					<h:outputText value="#{grupo.nomeCarros}"/>
+				</p:panelGrid>
+			</p:carousel>			
+			<br/><br/>
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Executivo"
+				var="grupo" itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<img id="img1" src="#{grupo.foto}"></img>
+					</f:facet>
+
+					<h:outputText value="Grupo:" />
+					<h:outputText value="#{grupo.nome}" />
+
+					<h:outputText value="Descrição: " />
+					<h:outputText value="#{grupo.descrição}" />
+
+					<h:outputText value="Carros: " />
+					<h:outputText value="#{grupo.nomeCarros}"/>
+				</p:panelGrid>
+			</p:carousel>
+			<br/><br/>
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="SUV"
+				var="grupo" itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<img id="img1" src="#{grupo.foto}"></img>
+					</f:facet>
+
+					<h:outputText value="Grupo:" />
+					<h:outputText value="#{grupo.nome}" />
+
+					<h:outputText value="Descrição: " />
+					<h:outputText value="#{grupo.descrição}" />
+
+					<h:outputText value="Carros: " />
+					<h:outputText value="#{grupo.nomeCarros}"/>
+				</p:panelGrid>
+			</p:carousel>
+			<br/><br/>
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Utilitários"
+				var="grupo" itemStyle="text-align:center" responsive="true">
+				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<f:facet name="header">
+						<img id="img1" src="#{grupo.foto}"></img>
+					</f:facet>
+
+					<h:outputText value="Grupo:" />
+					<h:outputText value="#{grupo.nome}" />
+
+					<h:outputText value="Descrição: " />
+					<h:outputText value="#{grupo.descrição}" />
+
+					<h:outputText value="Carros: " />
+					<h:outputText value="#{grupo.nomeCarros}"/>
+				</p:panelGrid>
+			</p:carousel>			
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
