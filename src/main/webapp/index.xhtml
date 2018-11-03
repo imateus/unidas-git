@@ -40,13 +40,17 @@
          <h2 class="align-center">            
             <i><p:link value="Promoções" href="http://localhost:8081/unidas/index.jsf"/></i>            
         </h2>
-		 <a href="https://www.youtube.com/watch?v=BP6GoDFpHKw">
-		 <img id="img1" src="https://www.unidas.com.br/media/2166/banner-carrossel-renault-captur-noite.png" style="width: 1640px;"></img>
-		 </a>
-		 <br/>
-		 <a href="https://www.youtube.com/watch?v=w2p3oid4nrk">
-		 <img id="img2" src="https://www.unidas.com.br/media/2127/banner-carrossel-desktop-unidas-sempre.png" style="width: 1640px;"></img>
-		 </a>
+		 
+		<h3>Fade</h3>
+		<p:imageSwitch effect="fade" id="fadeEffect">
+			<ui:repeat value="#{indexMB.images}" var="image"
+				id="fadeEffectImages">
+				<img src="#{image}" id="image" />
+			</ui:repeat>
+		</p:imageSwitch>
+		
+		
+		
 		 		 
     </ui:define>
 
