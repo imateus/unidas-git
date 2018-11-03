@@ -2,7 +2,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-<<<<<<< HEAD
                 xmlns:f="http://java.sun.com/jsf/core"
                 template="#{layoutMB.template}">
 
@@ -10,26 +9,29 @@
 
     <ui:define name="title">
             	
-     	<h4>Local de Retirada                      
-     	Local Devolução                       
-     	Data Retirada                             
+     	<h4>Local de Retirada                                                             
+     	Local Devolução                                                                                                        
+     	Data Retirada                                                                                                                    
      	Data Devolução</h4>
      	
      	<p:outputLabel  for="acSimple" />
         <p:autoComplete id="acSimple"   />
-                        
+                                                                             
       
         <p:outputLabel  for="acSimple" />
         <p:autoComplete id="acSimple1"   />
-                        
+                                                                                     
+                        
         
         <p:outputLabel for="button"  />
         <p:calendar id="button" showOn="button" />
-                        
+                                                                                      
+                        
         
         <p:outputLabel for="button"  />
         <p:calendar id="button1" showOn="button" />
-                        
+                                                                                      
+                        
         <p:button value="Pesquisar" icon="ui-fa-search">
     <f:param name="productId" value="10" />
 </p:button>
@@ -38,24 +40,8 @@
         <br/>
         <br/>
         
-         <h2 class="align-center">            
-=======
-                template="#{layoutMB.template}"
-                xmlns:f="http://java.sun.com/jsf/core">
-
-    <ui:param name="renderBreadCrumb" value="false"/>
-	
-	<f:metadata>
-		<f:event type="preRenderView" listener="#{logonMB.init}" />
-	</f:metadata>
-	
-	<ui:define name="title">
-        <h2 class="align-center">            
->>>>>>> 3413f42df2d6b47754e79a0e58544a0a4dcefdd0
-            <i><p:link value="Promoções" href="http://localhost:8081/unidas/index.jsf"/></i>            
-        </h2>
-		 
-		<h3>Fade</h3>
+			
+		<h3 class="align-center">Promoções</h3>
 		<p:imageSwitch effect="fade" id="fadeEffect">
 			<ui:repeat value="#{indexMB.images}" var="image"
 				id="fadeEffectImages">
@@ -67,9 +53,6 @@
 		
 		 		 
     </ui:define>
-<<<<<<< HEAD
 
-=======
->>>>>>> 3413f42df2d6b47754e79a0e58544a0a4dcefdd0
 
 </ui:composition>
