@@ -18,7 +18,13 @@
         <f:loadBundle var="msg" basename="starter"/>
         <h:outputStylesheet library="css" name="starter.css"/>
     </ui:define>
-
+	
+		
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	
+	
     <ui:define name="logo">
         <img height="auto" src="https://www.unidas.com.br/media/1122/logo.png"></img>
     </ui:define>
@@ -27,9 +33,9 @@
          <ui:include src="/includes/menubar.xhtml"/>
      </ui:define>
 
-    <ui:define name="top-menu">
-    #{logonMB.currentUser}
-        <ui:include src="#{logonMB.currentUser != null ? '/includes/top-bar.xhtml' : '/includes/top-bar-nao-logado.xhtml'}"/>
+    <ui:define name="top-menu" id="top-menu" >
+    	#{logonMB.currentUser}
+    	<ui:include src="/includes/top-bar.xhtml"/>
     </ui:define>
     
     <!-- below is just an example on how to define more tabs for control sidebar --> 

@@ -5,15 +5,19 @@ import static com.github.adminfaces.template.util.Assert.has;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.SQLException;
 
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Faces;
 
 import com.github.adminfaces.starter.entity.Usuario;
+import com.github.adminfaces.starter.infra.security.LogonMB;
 import com.github.adminfaces.starter.service.UsuarioService;
+import com.github.adminfaces.template.config.AdminConfig;
 
 @Named
 @ViewScoped
@@ -26,6 +30,11 @@ public class UsuarioFormMB implements Serializable {
 	private Integer id;
     private Usuario usuario;
     private String email;
+    
+    private LogonMB logonMB;
+    
+    @Inject
+    private AdminConfig adminConfig;
 
     private UsuarioService UsuarioService = new UsuarioService();
 
@@ -71,17 +80,25 @@ public class UsuarioFormMB implements Serializable {
         }
     }
 
-    public void save() {
+    public void save() throws IOException, SQLException {
         String msg;
         if (usuario.getId() == null) {
         	usuario.setId(null);
         	UsuarioService.saveOrUpdate(usuario);
-            msg = "Usuario " + usuario.getNome() + " Salvo com sucesso";
+        	
+        	/**Efetua login após cadastro*/
+        	FacesContext context = FacesContext.getCurrentInstance();
+        	context.getExternalContext().getSessionMap().put("email", usuario.getEmail());
+            addDetailMessage("Logged in successfully as <b>" + usuario.getEmail() + "</b>");
+            Faces.getExternalContext().getFlash().setKeepMessages(true);
+            Faces.redirect(adminConfig.getIndexPage());        	
+        	msg = "Usuario " + usuario.getNome() + " Salvo com sucesso"; 
        } else {
             UsuarioService.saveOrUpdate(usuario);
             msg = "Usuario " + usuario.getNome() + " Alterado com sucesso";
         }
         addDetailMessage(msg);
+        Faces.refresh();
     }
 
     public void clear() {

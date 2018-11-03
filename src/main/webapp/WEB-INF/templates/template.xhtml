@@ -18,6 +18,12 @@
         <h:outputStylesheet library="css" name="starter.css"/>
     </ui:define>
 
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	
+
     <ui:define name="logo">
         Unidas
     </ui:define>
@@ -30,8 +36,8 @@
          <ui:include src="/includes/menu.xhtml"/>
      </ui:define>
 
-    <ui:define name="top-menu">
-        <ui:include src="#{logonMB.currentUser != null ? '/includes/top-bar.xhtml' : '/includes/top-bar-nao-logado.xhtml'}"/>
+    <ui:define name="top-menu" id="top-menu" >
+        <ui:include src="/includes/top-bar.xhtml"/>
     </ui:define>
     
     <!-- below is just an example on how to define more tabs for control sidebar --> 

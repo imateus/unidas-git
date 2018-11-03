@@ -2,11 +2,16 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="#{layoutMB.template}">
+                template="#{layoutMB.template}"
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:param name="renderBreadCrumb" value="false"/>
-
-    <ui:define name="title">
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	
+	<ui:define name="title">
         <h2 class="align-center">            
             <i><p:link value="Promoções" href="http://localhost:8081/unidas/index.jsf"/></i>            
         </h2>

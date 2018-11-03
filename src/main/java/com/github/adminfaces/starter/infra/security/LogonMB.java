@@ -42,6 +42,8 @@ public class LogonMB extends AdminSession implements Serializable {
     public void init() {
     	esqueciSenha = false;
     	style = new String();
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	currentUser = (String) context.getExternalContext().getSessionMap().get("email");
     }
     
     public void login() throws IOException, SQLException {
