@@ -47,88 +47,91 @@
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
 					<br/>
-					<p:button value="Detalhes" icon="fa fa-plus" styleClass="btn-primary"></p:button>
-					
+					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{usuarioFormMB.save}"/>                         				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
 			<p:carousel value="#{grupoCarrosMB.grupoCarrosListIntermediario}" headerText="Intermediário"
 				var="grupo" itemStyle="text-align:center" responsive="true">
-				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
+					
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.grupo}" />
 
-					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.grupo}" />
-
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descricao}" />
-
-					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
+					<br/>
+					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{usuarioFormMB.save}"/>                         				  					
 				</p:panelGrid>
 			</p:carousel>			
 			<br/><br/>
 			<p:carousel value="#{grupoCarrosMB.grupoCarrosListExecutivo}" headerText="Executivo"
 				var="grupo" itemStyle="text-align:center" responsive="true">
-				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
+					
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.grupo}" />
 
-					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.grupo}" />
-
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descricao}" />
-
-					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
+					<br/>
+					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{usuarioFormMB.save}"/>                         				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
 			<p:carousel value="#{grupoCarrosMB.grupoCarrosListSuv}" headerText="SUV"
 				var="grupo" itemStyle="text-align:center" responsive="true">
-				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
+					
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.grupo}" />
 
-					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.grupo}" />
-
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descricao}" />
-
-					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
+					<br/>
+					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{usuarioFormMB.save}"/>                         				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
 			<p:carousel value="#{grupoCarrosMB.grupoCarrosListUtilitarios}" headerText="Utilitários"
 				var="grupo" itemStyle="text-align:center" responsive="true">
-				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
 					<f:facet name="header">
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
+					
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					
+					<p:separator style="width:350px;" />
+					
+					<h:outputText value="Grupo #{grupo.grupo}" />
 
-					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.grupo}" />
-
-					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descricao}" />
-
-					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
+					<br/>
+					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{usuarioFormMB.save}"/>                         				  					
 				</p:panelGrid>
 			</p:carousel>			
 		</h:form>

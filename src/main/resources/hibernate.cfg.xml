@@ -20,8 +20,8 @@
     <property name="current_session_context_class">thread</property>
 
     <!-- Mapping files will go here.... -->
-    <mapping class="com.github.adminfaces.starter.entity.Usuario" />
-    <mapping class="com.github.adminfaces.starter.entity.GrupoCarros" />
+    <mapping class="br.com.unidas.entity.Usuario" />
+    <mapping class="br.com.unidas.entity.GrupoCarros" />
 
 </session-factory>
 </hibernate-configuration>

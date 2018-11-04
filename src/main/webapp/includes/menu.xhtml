@@ -26,5 +26,11 @@
 				<span>Grupos de carros</span>
 			</p:link>
 		</li>
+		<li>
+        	<p:link outcome="/minhas-reservas.jsf" rendered="#{logonMB.currentUser != null}">
+				<i class="fa fa-calendar"></i>
+				<span>Minhas reservas</span>
+			</p:link>
+		</li>
 	</ul>
 </ui:composition>
