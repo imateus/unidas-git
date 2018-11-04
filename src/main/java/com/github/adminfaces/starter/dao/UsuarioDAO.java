@@ -11,14 +11,7 @@ import com.github.adminfaces.starter.entity.Usuario;
 
 public class UsuarioDAO {
 
-	private ConnectionFactory connectionFactory = new ConnectionFactory();
-	
-/*	public boolean validadeLogin(String email, String pass) throws SQLException {
-		Connection conexao = (Connection) connectionFactory.createConnection();
-		String sql = "select * from dblea.usuario where email = " + email + " and senha = " + pass;
-		PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(sql);
-		return ((ps.getResultSet()) != null ? true : false);
-	}*/
+	private ConnectionFactory connectionFactory = new ConnectionFactory();	
 	
 	public Usuario validadeEmailOrPass(String email, String pass){
 		

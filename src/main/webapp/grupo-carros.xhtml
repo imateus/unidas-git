@@ -30,7 +30,7 @@
 
 	<ui:define name="body">
 		<h:form id="form">
-			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Econômico"
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosListEconomico}" headerText="Econômico"
 				var="grupo" itemStyle="text-align:center" responsive="true">
 				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
@@ -39,11 +39,11 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descrição}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
 					
 					<p:separator style="width:350px;" />
 					
-					<h:outputText value="Grupo #{grupo.nome}" />
+					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
 					<br/>
@@ -52,7 +52,7 @@
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
-			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Intermediário"
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosListIntermediario}" headerText="Intermediário"
 				var="grupo" itemStyle="text-align:center" responsive="true">
 				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
@@ -62,17 +62,17 @@
 					</f:facet>
 
 					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.nome}" />
+					<h:outputText value="#{grupo.grupo}" />
 
 					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descrição}" />
+					<h:outputText value="#{grupo.descricao}" />
 
 					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
 				</p:panelGrid>
 			</p:carousel>			
 			<br/><br/>
-			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Executivo"
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosListExecutivo}" headerText="Executivo"
 				var="grupo" itemStyle="text-align:center" responsive="true">
 				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
@@ -82,17 +82,17 @@
 					</f:facet>
 
 					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.nome}" />
+					<h:outputText value="#{grupo.grupo}" />
 
 					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descrição}" />
+					<h:outputText value="#{grupo.descricao}" />
 
 					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
-			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="SUV"
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosListSuv}" headerText="SUV"
 				var="grupo" itemStyle="text-align:center" responsive="true">
 				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
@@ -102,17 +102,17 @@
 					</f:facet>
 
 					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.nome}" />
+					<h:outputText value="#{grupo.grupo}" />
 
 					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descrição}" />
+					<h:outputText value="#{grupo.descricao}" />
 
 					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
-			<p:carousel value="#{grupoCarrosMB.grupoCarrosList}" headerText="Utilitários"
+			<p:carousel value="#{grupoCarrosMB.grupoCarrosListUtilitarios}" headerText="Utilitários"
 				var="grupo" itemStyle="text-align:center" responsive="true">
 				<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
 					columnClasses="label,value" layout="grid"
@@ -122,10 +122,10 @@
 					</f:facet>
 
 					<h:outputText value="Grupo:" />
-					<h:outputText value="#{grupo.nome}" />
+					<h:outputText value="#{grupo.grupo}" />
 
 					<h:outputText value="Descrição: " />
-					<h:outputText value="#{grupo.descrição}" />
+					<h:outputText value="#{grupo.descricao}" />
 
 					<h:outputText value="Carros: " />
 					<h:outputText value="#{grupo.nomeCarros}"/>

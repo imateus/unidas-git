@@ -14,7 +14,15 @@ import com.github.adminfaces.starter.service.GrupoCarrosService;
 @ViewScoped
 public class GrupoCarrosMB implements Serializable {
  
-    private List<GrupoCarros> grupoCarrosList;
+    private List<GrupoCarros> grupoCarrosListEconomico;
+    
+    private List<GrupoCarros> grupoCarrosListIntermediario;
+    
+    private List<GrupoCarros> grupoCarrosListExecutivo;
+    
+    private List<GrupoCarros> grupoCarrosListSuv;
+    
+    private List<GrupoCarros> grupoCarrosListUtilitarios;
  
     private GrupoCarros selectedGrupoCarros;
  
@@ -22,16 +30,72 @@ public class GrupoCarrosMB implements Serializable {
  
     @PostConstruct
     public void init() {
-    	grupoCarrosList = service.createGrupoCarros(4);
+    	grupoCarrosListEconomico = service.createGrupoCarros(1);
+    	grupoCarrosListIntermediario = service.createGrupoCarros(2);
+    	grupoCarrosListSuv = service.createGrupoCarros(3);
+    	grupoCarrosListUtilitarios = service.createGrupoCarros(4);
     }
 
-	public List<GrupoCarros> getGrupoCarrosList() {
-		return grupoCarrosList;
+
+	public List<GrupoCarros> getGrupoCarrosListEconomico() {
+		return grupoCarrosListEconomico;
 	}
 
-	public void setGrupoCarrosList(List<GrupoCarros> grupoCarrosList) {
-		this.grupoCarrosList = grupoCarrosList;
+
+
+	public void setGrupoCarrosListEconomico(List<GrupoCarros> grupoCarrosListEconomico) {
+		this.grupoCarrosListEconomico = grupoCarrosListEconomico;
 	}
+
+
+
+	public List<GrupoCarros> getGrupoCarrosListIntermediario() {
+		return grupoCarrosListIntermediario;
+	}
+
+
+
+	public void setGrupoCarrosListIntermediario(List<GrupoCarros> grupoCarrosListIntermediario) {
+		this.grupoCarrosListIntermediario = grupoCarrosListIntermediario;
+	}
+
+
+
+	public List<GrupoCarros> getGrupoCarrosListExecutivo() {
+		return grupoCarrosListExecutivo;
+	}
+
+
+
+	public void setGrupoCarrosListExecutivo(List<GrupoCarros> grupoCarrosListExecutivo) {
+		this.grupoCarrosListExecutivo = grupoCarrosListExecutivo;
+	}
+
+
+
+	public List<GrupoCarros> getGrupoCarrosListSuv() {
+		return grupoCarrosListSuv;
+	}
+
+
+
+	public void setGrupoCarrosListSuv(List<GrupoCarros> grupoCarrosListSuv) {
+		this.grupoCarrosListSuv = grupoCarrosListSuv;
+	}
+
+
+
+	public List<GrupoCarros> getGrupoCarrosListUtilitarios() {
+		return grupoCarrosListUtilitarios;
+	}
+
+
+
+	public void setGrupoCarrosListUtilitarios(List<GrupoCarros> grupoCarrosListUtilitarios) {
+		this.grupoCarrosListUtilitarios = grupoCarrosListUtilitarios;
+	}
+
+
 
 	public GrupoCarros getSelectedGrupoCarros() {
 		return selectedGrupoCarros;

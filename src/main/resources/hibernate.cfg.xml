@@ -21,6 +21,7 @@
 
     <!-- Mapping files will go here.... -->
     <mapping class="com.github.adminfaces.starter.entity.Usuario" />
+    <mapping class="com.github.adminfaces.starter.entity.GrupoCarros" />
 
 </session-factory>
 </hibernate-configuration>

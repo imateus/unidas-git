@@ -9,6 +9,11 @@ import javax.persistence.*;
 @Table(name = "usuario")
 public class Usuario implements Serializable, Comparable<Usuario> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
