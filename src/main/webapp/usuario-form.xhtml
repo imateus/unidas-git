@@ -71,7 +71,8 @@
                                                 
                         <div class="ui-sm-12 ui-md-2 ui-lg-1">
                             <p:outputLabel value="Email" for="inptName"/>
-                        </div>
+                        </div>                                               
+                        
                         <div class="ui-sm-12 ui-md-4 ui-lg-5" >
                             <p:inputText id="inptEmail" value="#{usuarioFormMB.usuario.email}"/>
                         </div>
@@ -101,13 +102,14 @@
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<p:calendar	id="inptDataNascimento"
-								value="#{usuarioFormMB.usuario.dataNascimento}" />
+								value="#{usuarioFormMB.usuario.dataNascimento}" pattern="dd/MM/yy" mask="true"/>
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
 							<p:outputLabel value="Número CNH" for="inptNumeroCnh" />
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
+							
 							<p:inputText id="inptNumeroCnh"
 								value="#{usuarioFormMB.usuario.numeroCnh}" />
 						</div>
@@ -116,8 +118,14 @@
 							<p:outputLabel value="Categoria CNH" for="inptCategoriaCnh" />
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:inputText id="inptCategoriaCnh"
-								value="#{usuarioFormMB.usuario.categoriaCnh}" />
+							<p:selectOneMenu id="inptCategoriaCnh" value="#{usuarioFormMB.usuario.categoriaCnh}" required="true" label="Text 3">
+				                <f:selectItem itemLabel="Selecione uma categoria" itemValue="" noSelectionOption="true" />
+				                <f:selectItem itemLabel="A" itemValue="A" />
+				                <f:selectItem itemLabel="B" itemValue="B" />
+				                <f:selectItem itemLabel="C" itemValue="C" />
+				                <f:selectItem itemLabel="D" itemValue="D" />
+				                <f:selectItem itemLabel="E" itemValue="E" />
+	            			</p:selectOneMenu>
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
@@ -125,15 +133,19 @@
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<p:calendar id="inptValidadeCnh"
-								value="#{usuarioFormMB.usuario.validadeCnh}" />
+								value="#{usuarioFormMB.usuario.validadeCnh}" pattern="dd/MM/yy" mask="true"/>
 						</div>
 						
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
 							<p:outputLabel value="Gênero" for="inptGenero" />
-						</div>
+						</div>						
+						
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:inputText id="inptGenero"
-								value="#{usuarioFormMB.usuario.genero}" />
+							<p:selectOneMenu id="inptGenero" value="#{usuarioFormMB.usuario.genero}" required="true" label="Text 3">
+				                <f:selectItem itemLabel="Selecione um gênero" itemValue="" noSelectionOption="true" />
+				                <f:selectItem itemLabel="Masculino" itemValue="M" />
+				                <f:selectItem itemLabel="Feminino" itemValue="F" />
+	            			</p:selectOneMenu>
 						</div>											
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
 							<h:panelGroup id="pnlPassaporteLabel" rendered="#{usuarioFormMB.usuario.estrangeiro == true}">
