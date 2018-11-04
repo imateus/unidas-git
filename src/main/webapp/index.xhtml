@@ -3,60 +3,122 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
                 template="#{layoutMB.template}">
 
     <ui:param name="renderBreadCrumb" value="false"/>
+	
+	    <ui:define name="head-end">
+        <style type="text/css">
+            .ui-datatable .ui-datatable-header {
+                text-align: right !important;
+            }
+            
+            .ui-panel-title {
+                font-size: 35px !important;
+                color: white !important;
+            }
+			
+			.ui-panel.ui-widget.ui-widget-content.ui-corner-all{
+			    background-color: #005388;
+			}
+			
+			.ui-panel-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-all{
+			    background-color: #005388;
+			}
+            
+            .ui-outputlabel.ui-widget {
+                color: white !important;
+            }
+            
+            .ui-inputgroup-addon{
+            	background-color: #FFF14D;
+            	border-radius: 4px;
+            	height: 34px;
+            	margin-right: -14px;
+            	border-color: #FFF14D;
+            }
+            
+            .fa.fa-map-marker{
+            	color: #005388;
+            }
+            
+            .fa.fa-calendar{
+            	color: #005388;
+            }
+            
+            .ui-outputlabel.ui-widget{
+            	margin-left: -35px;
+            }
+            
+            .ui-button-text{
+            	font-weight: bold !important;
+            }	
+        </style>
+    </ui:define>
 	
 	<f:metadata>
 		<f:event type="preRenderView" listener="#{logonMB.init}" />
 	</f:metadata>
 	
-    <ui:define name="title">
-            	
-     	<h4>Local de Retirada                                                             
-     	Local Devolução                                                                                                        
-     	Data Retirada                                                                                                                    
-     	Data Devolução</h4>
-     	
-     	<p:outputLabel  for="acSimple" />
-        <p:autoComplete id="acSimple"   />
-                                                                             
-      
-        <p:outputLabel  for="acSimple" />
-        <p:autoComplete id="acSimple1"   />
-                                                                                     
-                        
-        
-        <p:outputLabel for="button"  />
-        <p:calendar id="button" showOn="button" />
-                                                                                      
-                        
-        
-        <p:outputLabel for="button"  />
-        <p:calendar id="button1" showOn="button" />
-                                                                                      
-                        
-        <p:button value="Pesquisar" icon="ui-fa-search">
-    <f:param name="productId" value="10" />
-</p:button>
- 
-        
-        <br/>
-        <br/>
-        
-			
-		<h3 class="align-center">Promoções</h3>
-		<p:imageSwitch effect="fade" id="fadeEffect">
+    <ui:define name="title">        
+        <p:panel id="basic" header="Aluguel de Carros" style="margin-bottom:20px">
+	        <h:panelGrid columns="10" cellpadding="20">									                    
+              
+		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+					<p:outputLabel value="Local de Retirada:"/>
+                </div>
+                
+		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                	<p:outputLabel value="Local Devolução:" />
+                </div>                
+                
+		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                	<p:outputLabel value="Data Retirada:" />
+                </div>                
+                
+		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                 	<p:outputLabel value="Data Devolução:" />
+                </div>
+
+		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+					<p:outputLabel value="" />
+                </div>
+
+				<div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5">
+					<span class="ui-inputgroup-addon"><i class="fa fa-map-marker"></i></span>
+					<p:inputText style="width: 350px;" placeholder="Digite Cidade, Aeroporto ou Loja"/>
+				</div>
+
+				<div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
+					<span class="ui-inputgroup-addon"><i class="fa fa-map-marker"></i></span>
+                	<p:inputText style="width: 350px;" placeholder="Digite Cidade, Aeroporto ou Loja"/>
+              	</div>
+				
+                <div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
+                	<span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+                	<p:calendar  placeholder="Escolha a Data"/>
+              	</div>
+                
+                <div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
+                	<span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+                	<p:calendar  placeholder="Escolha a Data"/>
+              	</div>
+              	               
+                <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                	<p:button value="ALUGUE" style="background-color: #FFF14D;border-color: #FFF14D;width: 161px; font-size: 15px;color: #0470A6;font-weight: bold;"/>
+              	</div>
+              	              	                      
+		    </h:panelGrid>
+	    </p:panel>	        
+       
+		<br/>
+              			
+		<p:imageSwitch effect="fade" id="fadeEffect" style="width: 100%;">
 			<ui:repeat value="#{indexMB.images}" var="image"
 				id="fadeEffectImages">
-				<img src="#{image}" id="image" />
+				<img src="#{image}" id="image" style="width: 100%;"/>
 			</ui:repeat>
-		</p:imageSwitch>
-		
-		
-		
-		 		 
+		</p:imageSwitch> 
     </ui:define>
-
-
 </ui:composition>
