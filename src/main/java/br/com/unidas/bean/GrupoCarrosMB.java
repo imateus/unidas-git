@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.omnifaces.util.Faces;
 
@@ -17,7 +18,12 @@ import br.com.unidas.service.GrupoCarrosService;
 @ViewScoped
 public class GrupoCarrosMB implements Serializable {
  
-    private List<GrupoCarros> grupoCarrosListEconomico;    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private List<GrupoCarros> grupoCarrosListEconomico;    
     private List<GrupoCarros> grupoCarrosListIntermediario;    
     private List<GrupoCarros> grupoCarrosListExecutivo;    
     private List<GrupoCarros> grupoCarrosListSuv;    
@@ -29,28 +35,30 @@ public class GrupoCarrosMB implements Serializable {
  
     @PostConstruct
     public void init() {
-    	grupoCarrosListEconomico = service.createGrupoCarros(1);
-    	grupoCarrosListIntermediario = service.createGrupoCarros(2);
-    	grupoCarrosListExecutivo = service.createGrupoCarros(3);
-    	grupoCarrosListSuv = service.createGrupoCarros(4);
-    	grupoCarrosListUtilitarios = service.createGrupoCarros(5);
+    	grupoCarrosListEconomico = service.buscaPorCategora(1);
+    	grupoCarrosListIntermediario = service.buscaPorCategora(2);
+    	grupoCarrosListExecutivo = service.buscaPorCategora(3);
+    	grupoCarrosListSuv = service.buscaPorCategora(4);
+    	grupoCarrosListUtilitarios = service.buscaPorCategora(5);
     }
 
     
-    public void redirectDetalheGrupo() throws IOException {
+    public void redirectDetalheGrupo(GrupoCarros grupo) throws IOException {
+    	FacesContext context = FacesContext.getCurrentInstance();
+    	context.getExternalContext().getSessionMap().put("grupo", grupo.getGrupo());
     	Faces.redirect("detalhe-grupo.jsf");
     }
     
+	
+
 	public List<GrupoCarros> getGrupoCarrosListEconomico() {
 		return grupoCarrosListEconomico;
 	}
 
 
-
 	public void setGrupoCarrosListEconomico(List<GrupoCarros> grupoCarrosListEconomico) {
 		this.grupoCarrosListEconomico = grupoCarrosListEconomico;
 	}
-
 
 
 	public List<GrupoCarros> getGrupoCarrosListIntermediario() {

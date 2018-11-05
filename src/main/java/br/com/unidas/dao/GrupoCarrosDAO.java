@@ -41,4 +41,21 @@ public class GrupoCarrosDAO {
 		
 		return null;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<GrupoCarros> buscaPorGrupo(String grupo){		
+		Session session = connectionFactory.getSession();
+		String sql = "from GrupoCarros where grupo = :grupo ";
+		
+		try {
+			Query<?> query = session.createQuery(sql).setParameter("grupo", grupo);		
+			return (List<GrupoCarros>) query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return null;
+	}
 }

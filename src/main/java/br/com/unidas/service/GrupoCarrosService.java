@@ -1,6 +1,5 @@
 package br.com.unidas.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.unidas.dao.GrupoCarrosDAO;
@@ -10,8 +9,12 @@ public class GrupoCarrosService {
 		
 	private GrupoCarrosDAO dao = new GrupoCarrosDAO();
 	 
-    public List<GrupoCarros> createGrupoCarros(int categoria) {       
+    public List<GrupoCarros> buscaPorCategora(int categoria) {       
     	return dao.buscaPorCategora(categoria);
-    }	 	 	
+    }
+    
+    public List<GrupoCarros> buscaPorGrupo(String grupo) {       
+    	return dao.buscaPorGrupo(grupo);
+    }
 
 }
