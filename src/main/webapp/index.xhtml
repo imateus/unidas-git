@@ -10,119 +10,88 @@
 	
 	    <ui:define name="head-end">
         <style type="text/css">
-            .ui-datatable .ui-datatable-header {
-                text-align: right !important;
-            }
-            
-            .ui-panel-title {
-                font-size: 35px !important;
-                color: white !important;
-            }
-			
-			.ui-panel.ui-widget.ui-widget-content.ui-corner-all{
-			    background-color: #005388;
+			.ui-button-text {
+				font-weight: bold !important;
 			}
-			
-			.ui-panel-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-all{
-			    background-color: #005388;
-			}
-            
-            .ui-outputlabel.ui-widget {
-                color: white !important;
-            }
-            
-            .ui-inputgroup-addon{
-            	background-color: #FFF14D;
-            	border-radius: 4px;
-            	height: 34px;
-            	margin-right: -14px;
-            	border-color: #FFF14D;
-            }
-            
-            .fa.fa-map-marker{
-            	color: #005388;
-            }
-            
-            .fa.fa-calendar-o{
-            	color: #005388;
-            }
-            
-            .ui-outputlabel.ui-widget{
-            	margin-left: -35px;
-            }
-            
-            .ui-button-text{
-            	font-weight: bold !important;
-            }
-            
-            .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker{
-            	width: 110px;
-            }	
-        </style>
+</style>
     </ui:define>
 	
 	<f:metadata>
 		<f:event type="preRenderView" listener="#{logonMB.init}" />
 	</f:metadata>
-	
-    <ui:define name="title">        
-        <p:panel id="basic" header="Aluguel de Carros" style="margin-bottom:20px">
-	        <h:panelGrid columns="10" cellpadding="20">									                    
-              
-		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-					<p:outputLabel value="Local de Retirada:"/>
-                </div>
-                
-		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-                	<p:outputLabel value="Local Devolução:" />
-                </div>                
-                
-		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-                	<p:outputLabel value="Data Retirada:" />
-                </div>                
-                
-		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-                 	<p:outputLabel value="Data Devolução:" />
-                </div>
+	    <ui:define name="title">
+       Alugue um carro              		
+    </ui:define>
+	<ui:define name="body">
+		<h:form id="form" prependId="false">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="ui-g ui-fluid">
 
-		        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-					<p:outputLabel value="" />
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1">
+                            <p:outputLabel value="Local de Retirada" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-1 ui-lg-2" >
+                        	<p:autoComplete 
+                        	value="#{indexMB.reserva.localRetirada}" 
+                        	completeMethod="#{indexMB.completeEnderecoContains}"
+                        	var="endereco"
+                        	itemLabel="#{endereco.logradouro} #{endereco.numero}"
+                        	itemValue="#{endereco}"
+                        	converter="entityConverter"/>
+                        </div>
+                        
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1">
+                            <p:outputLabel value="Local de Devolução" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-1 ui-lg-2" >
+                        	<p:autoComplete 
+                        	value="#{indexMB.reserva.localRetirada}" 
+                        	completeMethod="#{indexMB.completeEnderecoContains}"
+                        	var="endereco"
+                        	itemLabel="#{endereco.logradouro} #{endereco.numero}"
+                        	itemValue="#{endereco}"
+                        	converter="entityConverter"/>
+                        </div>
+                                                                       
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1">
+                            <p:outputLabel value="Data e Hora de Retirada" />
+                        </div>                                               
+                        
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1" >
+                            <p:calendar  value="#{indexMB.reserva.dataRetirada}"/>
+                        </div>
+                        
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1">
+                            <p:outputLabel value="Data e Hora de Devolução" />
+                        </div>                                               
+                        
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1" >
+                            <p:calendar value="#{indexMB.reserva.dataDevolucao}"/>
+                        </div>                                             
+                        
+                        <div class="ui-sm-12 ui-md-1 ui-lg-1" >
+                            <p:commandButton value="ALUGUE"
+                            				 action="#{indexMB.efetuarReserva}" 
+                            		  		 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>
+                        </div>
+					</div>
                 </div>
-
-				<div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5">
-					<span class="ui-inputgroup-addon"><i class="fa fa-map-marker"></i></span>
-					<p:inputText style="width: 200px;" placeholder="Digite Cidade, Aeroporto ou Loja"/>
-				</div>
-
-				<div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
-					<span class="ui-inputgroup-addon"><i class="fa fa-map-marker"></i></span>
-                	<p:inputText style="width: 200px;" placeholder="Digite Cidade, Aeroporto ou Loja"/>
-              	</div>
-				
-                <div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
-                	<span class="ui-inputgroup-addon"><i class="fa fa-calendar-o"></i></span>
-                	<p:calendar  placeholder="Escolha a Data"/>
-              	</div>
-                
-                <div class="ui-inputgroup ui-sm-12 ui-md-4 ui-lg-5" >
-                	<span class="ui-inputgroup-addon"><i class="fa fa-calendar-o"></i></span>
-                	<p:calendar  placeholder="Escolha a Data"/>
-              	</div>
-              	               
-                <div class="ui-sm-12 ui-md-4 ui-lg-5" >
-                	<p:button value="ALUGUE" style="background-color: #FFF14D;border-color: #FFF14D;width: 161px; font-size: 15px;color: #0470A6;font-weight: bold;"/>
-              	</div>
-              	              	                      
-		    </h:panelGrid>
-	    </p:panel>	        
-       
-		<br/>
-              			
-		<p:imageSwitch effect="fade" id="fadeEffect" style="width: 100%;">
+            </div>
+        </h:form>
+        
+        		<p:imageSwitch effect="fade" id="fadeEffect" style="width: 100%;">
 			<ui:repeat value="#{indexMB.images}" var="image"
 				id="fadeEffectImages">
 				<img src="#{image}" id="image" style="width: 100%;"/>
 			</ui:repeat>
-		</p:imageSwitch> 
-    </ui:define>
+		</p:imageSwitch>
+        			
+	</ui:define>
+
 </ui:composition>
