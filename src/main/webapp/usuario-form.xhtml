@@ -84,7 +84,6 @@
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 						        <p:selectBooleanButton id="estrangeiro" value="#{usuarioFormMB.usuario.estrangeiro}" onLabel="Sim" offLabel="Não" style="width:60px">
-						        	<p:ajax update="@form"/>
 						        </p:selectBooleanButton>					 
 					    	</h:panelGrid>
 						</div>
@@ -103,7 +102,10 @@
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							
 							<p:inputText id="inptNumeroCnh"
-								value="#{usuarioFormMB.usuario.numeroCnh}" />
+								value="#{usuarioFormMB.usuario.numeroCnh}"
+								converterMessage="É Permitido apenas números">
+								<f:convertNumber integerOnly="true" minIntegerDigits="1"/>
+								</p:inputText>
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
@@ -140,12 +142,12 @@
 	            			</p:selectOneMenu>
 						</div>											
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
-							<h:panelGroup id="pnlPassaporteLabel" rendered="#{usuarioFormMB.usuario.estrangeiro == true}">
+							<h:panelGroup id="pnlPassaporteLabel">
 								<p:outputLabel value="Passaporte" for="inptPassaporte" />
 							</h:panelGroup>								
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<h:panelGroup id="pnlPassaporteInput" rendered="#{usuarioFormMB.usuario.estrangeiro == true}">
+							<h:panelGroup id="pnlPassaporteInput">
 								<p:inputText id="inptPassaporte"
 								value="#{usuarioFormMB.usuario.passaporte}" />
 							</h:panelGroup>

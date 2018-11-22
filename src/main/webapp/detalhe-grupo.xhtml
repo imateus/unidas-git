@@ -1,61 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:adm="http://github.com/adminfaces"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
                 template="#{layoutMB.template}">
 
-    <ui:param name="title" value="Grupo BM"/> <!-- Automatic create breadCrumb and page title when param 'title' is provided. --> 
-
-    <ui:define name="head-end">
+    <ui:param name="renderBreadCrumb" value="false"/>
+	
+	    <ui:define name="head-end">
         <style type="text/css">
-            .ui-datatable .ui-datatable-header {
-                text-align: right !important;
-            }
-            .ui-carousel-header-title {
-                font-size: 20px !important;
-                color: #005b9e !important;
-            }
-            
-            .ui-md-6 {
-            	width: 100% !important;
-            	font-size: 15px !important;
-            	font-weight:normal !important;
-            	color: #005b9e;
-            }
-            
-            
-        </style>
+			.ui-button-text {
+				font-weight: bold !important;
+			}
+</style>
     </ui:define>
-
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	    <ui:define name="title">
+       Detalhe do Grupo      		
+    </ui:define>
 	<ui:define name="body">
 		<h:form id="form" prependId="false">
-            <p:focus rendered="#{empty usuarioFormMB.id}"/>
-
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <div class="ui-g ui-fluid">
+                        
+                        <!-- Imagem carro -->   
+                        <div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+							<IMG alt="" src="#{detalheGrupoMB.grupo.foto}" />
+                        </div>                        
+                        
+                        <!-- Descrição -->                     
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.descricao}" />
+                        </div>                        
+                        
+                        <!-- Grupo -->
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.grupo}" />
+                        </div>
 
-                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-                            <IMG alt="" src="https://www.unidas.com.br/media/2065/aluguel-de-carros-grupo-bm-peugeot208.png" />
+                        <!-- Carros -->                        
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.nomeCarros}" />
+                        </div>                        
+                                
+                                                                                                                     
+                        <!-- Informações -->
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5">
+                            <p:separator style="width:100%" />
+                        </div>                        
+						<div class="ui-sm-12 ui-md-4 ui-lg-2" style="text-align: center;">
+                            <p:outputLabel value="Opcionais e Acessórios" />
                         </div>
-                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
-                            <p:outputLabel value="" />
-                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5">
+                            <p:separator style="width:100%" />
+                        </div>                                                                      
                         
                                                 
-                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
-                            <p:outputLabel value="Data de locação" for="inptDtLocacao"/>
-                        </div>                                               
+                        <!-- Portas -->                        
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.portas} Portas" />
+                        </div>
+
+                        <!-- Ar Condicionado -->
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="Ar Condicionado" rendered="#{detalheGrupoMB.grupo.arCondicionado == true}"/>
+                        </div>
                         
-                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
-                            <p:calendar id="inptDtLocacao" value="#{usuarioFormMB.usuario.email}"/>
-                        </div>																				
+                        <!-- Lugares -->                        
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.portas} Lugares" />
+                        </div>
+
+                        <!-- Direção Hidráulica -->  
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="Direção Hidráulica" rendered="#{detalheGrupoMB.grupo.direcaoHidraulica == true}"/>
+                        </div>
+
+                        <!-- Air Bag -->
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="Air Bag" rendered="#{detalheGrupoMB.grupo.airBag == true}"/>
+                        </div>
+                        
+                        <!-- Transmissão -->                        
+						<div class="ui-sm-12 ui-md-4 ui-lg-12" style="text-align: center;">
+                            <p:outputLabel value="#{detalheGrupoMB.grupo.transmissaoAutomatica == true ? 'Transmissão Automática' : 'Transmissão Manual'}" />
+                        </div>
 					</div>
                 </div>
             </div>
-
         </h:form>
+        			
 	</ui:define>
 
 </ui:composition>

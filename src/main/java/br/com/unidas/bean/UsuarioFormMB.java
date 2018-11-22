@@ -89,7 +89,13 @@ public class UsuarioFormMB implements Serializable {
         
         if (usuario.getId() == null) {        	
         	usuario.setId(null);
-        	UsuarioService.saveOrUpdate(usuario);
+        	
+        	try {
+        		UsuarioService.saveOrUpdate(usuario);
+			} catch (Exception e) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao salvar usuário"));
+				return;
+			}        	
         	
         	/**Efetua login após cadastro*/
         	FacesContext context = FacesContext.getCurrentInstance();
@@ -99,7 +105,12 @@ public class UsuarioFormMB implements Serializable {
             Faces.redirect(adminConfig.getIndexPage());        	
         	msg = "Usuário " + usuario.getNome() + " salvo com sucesso"; 
        } else {
-            UsuarioService.saveOrUpdate(usuario);
+	       	try {
+	    		UsuarioService.saveOrUpdate(usuario);
+			} catch (Exception e) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao salvar usuário"));
+				return;
+			}    
             msg = "Usuário " + usuario.getNome() + " alterado com sucesso";
         }
         

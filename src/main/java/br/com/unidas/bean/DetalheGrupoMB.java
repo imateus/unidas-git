@@ -25,7 +25,7 @@ public class DetalheGrupoMB implements Serializable {
     @PostConstruct
     public void init() {
     	FacesContext context = FacesContext.getCurrentInstance();
-    	service.buscaPorGrupo((String) context.getExternalContext().getSessionMap().get("grupo"));
+    	grupo = service.buscaPorGrupo((String) context.getExternalContext().getSessionMap().get("grupo")).get(0);
     }
 	
 	public GrupoCarros getGrupo() {
