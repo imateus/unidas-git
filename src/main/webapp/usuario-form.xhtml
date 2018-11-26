@@ -7,15 +7,14 @@
     <ui:define name="title">
         Editar Cadastro
     </ui:define>
-
+	<ui:param name="renderBreadCrumb" value="false"/>
     <ui:define name="body">
         <f:metadata>
             <f:viewParam name="id" value="#{usuarioFormMB.id}" converter="javax.faces.Long"/>
             <!-- use view action if you are in a Java EE 7 server: <f:viewAction action="#{usuarioFormMB.init()}"/>-->
             <f:event type="preRenderView" listener="#{usuarioFormMB.init()}"/>
         </f:metadata>
-
-        <adm:breadcrumb title="#{empty usuarioFormMB.id ? 'New Usuario' : 'Usuario '.concat(usuarioFormMB.id)}" link="usuario-form.jsf?login=#{logonMB.currentUser}"/>
+        
         <h:form id="form" prependId="false">
             <p:focus rendered="#{empty usuarioFormMB.id}"/>
 
@@ -68,14 +67,24 @@
                         <div class="ui-sm-12 ui-md-4 ui-lg-5" >
                             <p:inputText id="inptEmail" value="#{usuarioFormMB.usuario.email}"/>
                         </div>
+						<h:form rendered="#{usuarioFormMB.isNew()}">
+							<div class="ui-sm-12 ui-md-2 ui-lg-1">
+								<p:outputLabel value="Senha" for="inptSenha" rendered="#{usuarioFormMB.isNew()}"/>
+							</div>
+							
+							<div class="ui-sm-12 ui-md-4 ui-lg-5">
+								<p:password id="inptSenha"
+									value="#{usuarioFormMB.usuario.senha}" rendered="#{usuarioFormMB.isNew()}"/>
+							</div>
+						</h:form>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
-							<p:outputLabel value="Senha" for="inptSenha" />
+							<p:outputLabel value="Data Nascimento" for="inptDataNascimento" />
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:password id="inptSenha"
-								value="#{usuarioFormMB.usuario.senha}" />
-						</div>				
+							<p:calendar	id="inptDataNascimento"
+								value="#{usuarioFormMB.usuario.dataNascimento}" pattern="dd/MM/yyyy" mask="true"/>
+						</div>
 						
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
 							<p:outputLabel value="Estrangeiro" />	
@@ -89,23 +98,10 @@
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
-							<p:outputLabel value="Data Nascimento" for="inptDataNascimento" />
-						</div>
-						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							<p:calendar	id="inptDataNascimento"
-								value="#{usuarioFormMB.usuario.dataNascimento}" pattern="dd/MM/yy" mask="true"/>
-						</div>
-
-						<div class="ui-sm-12 ui-md-2 ui-lg-1">
 							<p:outputLabel value="Número CNH" for="inptNumeroCnh" />
 						</div>
-						<div class="ui-sm-12 ui-md-4 ui-lg-5">
-							
-							<p:inputText id="inptNumeroCnh"
-								value="#{usuarioFormMB.usuario.numeroCnh}"
-								converterMessage="É Permitido apenas números">
-								<f:convertNumber integerOnly="true" minIntegerDigits="1"/>
-								</p:inputText>
+						<div class="ui-sm-12 ui-md-4 ui-lg-5">							
+							<p:inputMask id="inptNumeroCnh" value="#{usuarioFormMB.usuario.numeroCnh}" mask="99999999999"/>
 						</div>
 
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
@@ -127,7 +123,7 @@
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<p:calendar id="inptValidadeCnh"
-								value="#{usuarioFormMB.usuario.validadeCnh}" pattern="dd/MM/yy" mask="true"/>
+								value="#{usuarioFormMB.usuario.validadeCnh}" pattern="dd/MM/yyyy" mask="true"/>
 						</div>
 						
 						<div class="ui-sm-12 ui-md-2 ui-lg-1">
@@ -148,8 +144,7 @@
 						</div>
 						<div class="ui-sm-12 ui-md-4 ui-lg-5">
 							<h:panelGroup id="pnlPassaporteInput">
-								<p:inputText id="inptPassaporte"
-								value="#{usuarioFormMB.usuario.passaporte}" />
+								<p:inputMask id="inptPassaporte" value="#{usuarioFormMB.usuario.passaporte}" mask="99999999999"/>
 							</h:panelGroup>
 						</div>
 																

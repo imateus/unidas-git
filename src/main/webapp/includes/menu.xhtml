@@ -23,13 +23,19 @@
         <li>
         	<p:link outcome="/grupo-carros.jsf">
 				<i class="fa fa-car"></i>
-				<span>Grupos de carros</span>
+				<span>Grupos de Carros</span>
+			</p:link>
+		</li>
+		<li>
+        	<p:link outcome="/reserva.jsf" rendered="#{logonMB.currentUser != null}">
+				<i class="fa fa-shopping-cart"></i>
+				<span>Efetuar Reserva</span>
 			</p:link>
 		</li>
 		<li>
         	<p:link outcome="/minhas-reservas.jsf" rendered="#{logonMB.currentUser != null}">
 				<i class="fa fa-calendar"></i>
-				<span>Minhas reservas</span>
+				<span>Minhas Reservas</span>
 			</p:link>
 		</li>
 	</ul>

@@ -100,7 +100,7 @@ public class UsuarioFormMB implements Serializable {
         	/**Efetua login após cadastro*/
         	FacesContext context = FacesContext.getCurrentInstance();
         	context.getExternalContext().getSessionMap().put("email", usuario.getEmail());
-            addDetailMessage("Logged in successfully as <b>" + usuario.getEmail() + "</b>");
+            addDetailMessage("<b>" + usuario.getEmail() + "</b> logado com sucesso");
             Faces.getExternalContext().getFlash().setKeepMessages(true);
             Faces.redirect(adminConfig.getIndexPage());        	
         	msg = "Usuário " + usuario.getNome() + " salvo com sucesso"; 

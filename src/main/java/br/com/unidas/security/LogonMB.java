@@ -54,7 +54,7 @@ public class LogonMB extends AdminSession implements Serializable {
     	FacesContext context = FacesContext.getCurrentInstance();
     	context.getExternalContext().getSessionMap().put("email", email);
     	currentUser = email;
-        addDetailMessage("Logged in successfully as <b>" + email + "</b>");
+        addDetailMessage("<b>" + email + "</b> logado com sucesso");
         Faces.getExternalContext().getFlash().setKeepMessages(true);
         Faces.redirect(adminConfig.getIndexPage()); 
     }

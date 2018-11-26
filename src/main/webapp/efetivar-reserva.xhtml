@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="#{layoutMB.template}">
+
+    <ui:param name="renderBreadCrumb" value="false"/>
+	
+	    <ui:define name="head-end">
+        <style type="text/css">
+			.ui-button-text {
+				font-weight: bold !important;
+			}
+</style>
+    </ui:define>
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{logonMB.init}" />
+	</f:metadata>
+	    <ui:define name="title">
+       Resumo da Reserva      		
+    </ui:define>
+	<ui:define name="body">
+		<h:form id="form" prependId="false">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="ui-g ui-fluid">
+                        
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Data Retirada" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="#{reservaMB.reserva.dataRetirada}">
+                            	<f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </div>
+                        
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Data Devolução" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="#{reservaMB.reserva.dataDevolucao}">
+                            	<f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </div>                        
+                        
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Local Retirada" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="#{reservaMB.reserva.localRetirada.logradouro}, #{reservaMB.reserva.localRetirada.numero}"/>
+                        </div>                        
+
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Local Devolução" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="#{reservaMB.reserva.localDevolucao.logradouro}, #{reservaMB.reserva.localDevolucao.numero}"/>
+                        </div>
+
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Grupo" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="#{reservaMB.reserva.grupoCarro}"/>
+                        </div>
+                                                
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Valor Reserva" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <h:outputText value="R$ #{reservaMB.reserva.valorReserva}"/>
+                        </div>
+                                              
+                        <div class="ui-sm-12 ui-md-4 ui-lg-12">
+                            <p:separator style="width:100%" />
+                        </div>
+                        
+						<div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Número Cartão" for="cartao"/>
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <p:inputMask id="cartao" value="#{reservaMB.numeroCartao}" mask="9999-9999-9999-9999"/>
+                        </div>
+                        
+						<div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Data Expiração"/>
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <p:calendar value="#{reservaMB.dataExpiracao}" pattern="MM/yyyy">
+                            	<f:convertDateTime pattern="MM/yyyy" />
+                            </p:calendar>
+                        </div>
+
+						<div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Nome do Titular"/>
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-5" >
+                            <p:inputText value="#{reservaMB.nomeTitular}"/>
+                        </div>
+                        
+                        <div class="ui-sm-12 ui-md-2 ui-lg-1">
+                            <p:outputLabel value="Código de Segurança" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-1" >
+                            <p:inputMask value="#{reservaMB.codigoSeguranca}" mask="999" />
+                        </div>
+                        <div class="ui-sm-12 ui-md-4 ui-lg-4" >                            
+                        </div>                         
+                        
+                        
+                        <div class="ui-sm-12 ui-md-4 ui-lg-10" >
+                            <p:outputLabel value=""/>
+                        </div>
+                        
+
+	                        <div class="ui-sm-12 ui-md-4 ui-lg-1" >
+		                        <p:commandButton value="Voltar" 
+		                        				 action="#{reservaMB.voltarGrupoCarros}" 
+		                        				 update="@form"
+		                                         icon="fa fa-arrow-left"
+		                                         styleClass="btn-primary"
+		                                         disabled="#{reservaMB.saved == true}">
+		                                         </p:commandButton>
+		                        <p:spacer width="5" rendered="#{usuarioFormMB.isNew()}"/>
+	                        </div>
+                        
+                        
+	                        <div class="ui-sm-12 ui-md-4 ui-lg-1" >
+		                        <p:commandButton value="Salvar" 
+		                        				 action="#{reservaMB.salvarReserva}" 
+		                        				 update="@form"
+		                                         icon="fa fa-check"
+		                                         styleClass="btn-primary"
+		                                         disabled="#{reservaMB.saved == true}">
+		                                         </p:commandButton>
+		                        <p:spacer width="5"/>                        
+                    		</div>
+
+					</div>
+                </div>
+            </div>
+        </h:form>
+        			
+	</ui:define>
+
+</ui:composition>

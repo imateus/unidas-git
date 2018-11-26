@@ -11,7 +11,7 @@ import br.com.unidas.entity.Usuario;
 
 public class UsuarioDAO {
 
-	private ConnectionFactory connectionFactory = new ConnectionFactory();	
+	private ConnectionFactory connectionFactory = new ConnectionFactory();
 	
 	public Usuario validadeEmailOrPass(String email, String pass){
 		

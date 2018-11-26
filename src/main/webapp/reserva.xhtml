@@ -20,7 +20,7 @@
 		<f:event type="preRenderView" listener="#{logonMB.init}" />
 	</f:metadata>
 	    <ui:define name="title">
-       Alugue um carro              		
+       Efetuar Reserva              		
     </ui:define>
 	<ui:define name="body">
 		<h:form id="form" prependId="false">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="ui-sm-12 ui-md-1 ui-lg-2" >
                         	<p:autoComplete 
-                        	value="#{reservaMB.reserva.localRetirada}" 
+                        	value="#{reservaMB.reserva.localRetirada}"
                         	completeMethod="#{reservaMB.completeEnderecoContains}"
                         	var="endereco"
                         	itemLabel="#{endereco.logradouro} #{endereco.numero}"
@@ -83,15 +83,7 @@
 					</div>
                 </div>
             </div>
-        </h:form>
-        
-        		<p:imageSwitch effect="fade" id="fadeEffect" style="width: 100%;">
-			<ui:repeat value="#{indexMB.images}" var="image"
-				id="fadeEffectImages">
-				<img src="#{image}" id="image" style="width: 100%;"/>
-			</ui:repeat>
-		</p:imageSwitch>
-        			
+        </h:form>       			
 	</ui:define>
 
 </ui:composition>

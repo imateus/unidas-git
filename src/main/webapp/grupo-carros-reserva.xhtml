@@ -5,7 +5,7 @@
                 xmlns:adm="http://github.com/adminfaces"
                 template="#{layoutMB.template}">
 
-    <ui:param name="title" value="Grupos de Carros"/> <!-- Automatic create breadCrumb and page title when param 'title' is provided. --> 
+    <ui:param name="title" value="Selecione um Carro"/> <!-- Automatic create breadCrumb and page title when param 'title' is provided. --> 
 	<ui:param name="renderBreadCrumb" value="false"/>
     <ui:define name="head-end">
         <style type="text/css">
@@ -39,15 +39,25 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important; font-size:18px;"/>
 					
 					<p:separator style="width:350px;" />
 					
 					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
-					<br/>
-					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{grupoCarrosMB.redirectDetalheGrupo(grupo)}"/>                      				  					
+					
+					<h:outputText value="Diária R$ #{grupo.preco}" style="font-weight:bold !important; font-size:18px;"/>
+
+					<p:commandButton value="Selecionar" 
+									 icon="fa fa-check"									  
+									 action="#{reservaMB.selecionarGrupo(grupo)}"
+									 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>                      				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
@@ -60,15 +70,23 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important; font-size:18px;"/>
 					
 					<p:separator style="width:350px;" />
 					
 					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
-					<br/>
-					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{grupoCarrosMB.redirectDetalheGrupo(grupo)}"/>                      				  					
+<h:outputText value="Diária R$ #{grupo.preco}" style="font-weight:bold !important; font-size:18px;"/>
+					<p:commandButton value="Selecionar" 
+									 icon="fa fa-check"									  
+									 action="#{reservaMB.selecionarGrupo(grupo)}"
+									 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>                      				  					
 				</p:panelGrid>
 			</p:carousel>			
 			<br/><br/>
@@ -81,15 +99,23 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important; font-size:18px;"/>
 					
 					<p:separator style="width:350px;" />
 					
 					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
-					<br/>
-					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{grupoCarrosMB.redirectDetalheGrupo(grupo)}"/>                      				  					
+<h:outputText value="Diária R$ #{grupo.preco}" style="font-weight:bold !important; font-size:18px;"/>
+					<p:commandButton value="Selecionar" 
+									 icon="fa fa-check"									  
+									 action="#{reservaMB.selecionarGrupo(grupo)}"
+									 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>                      				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
@@ -102,15 +128,23 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important; font-size:18px;"/>
 					
 					<p:separator style="width:350px;" />
 					
 					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
-					<br/>
-					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{grupoCarrosMB.redirectDetalheGrupo(grupo)}"/>                      				  					
+<h:outputText value="Diária R$ #{grupo.preco}" style="font-weight:bold !important; font-size:18px;"/>
+					<p:commandButton value="Selecionar" 
+									 icon="fa fa-check"									  
+									 action="#{reservaMB.selecionarGrupo(grupo)}"
+									 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>                      				  					
 				</p:panelGrid>
 			</p:carousel>
 			<br/><br/>
@@ -123,15 +157,23 @@
 						<img id="img1" src="#{grupo.foto}"></img>
 					</f:facet>
 					
-					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important;"/>
+					<h:outputText value="#{grupo.descricao}"  style="font-weight:bold !important; font-size:18px;"/>
 					
 					<p:separator style="width:350px;" />
 					
 					<h:outputText value="Grupo #{grupo.grupo}" />
 
 					<h:outputText value="#{grupo.nomeCarros}"/>
-					<br/>
-					<p:commandButton value="Detalhes" icon="fa fa-plus" styleClass="btn-primary" action="#{grupoCarrosMB.redirectDetalheGrupo(grupo)}"/>                      				  					
+<h:outputText value="Diária R$ #{grupo.preco}" style="font-weight:bold !important; font-size:18px;"/>
+					<p:commandButton value="Selecionar" 
+									 icon="fa fa-check"
+									 action="#{reservaMB.selecionarGrupo(grupo)}"
+									 style="
+			                            		  	background-color: #FFF14D;
+			                            		  	border-color: #FFF14D;width: 161px;
+			                            		  	font-size: 15px;
+			                            		  	color: #0470A6;
+			                            		  	font-weight: bold;"/>                      				  					
 				</p:panelGrid>
 			</p:carousel>			
 		</h:form>

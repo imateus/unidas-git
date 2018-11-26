@@ -7,7 +7,9 @@
     <ui:define name="title">
         Carros
     </ui:define>
-
+	
+	<ui:param name="renderBreadCrumb" value="false"/>
+    
     <ui:define name="body">
         <f:metadata>
             <f:viewParam name="id" value="#{carFormMB.id}" converter="javax.faces.Long"/>
@@ -15,7 +17,7 @@
             <f:event type="preRenderView" listener="#{carFormMB.init}"/>
         </f:metadata>
 
-        <adm:breadcrumb title="#{empty carFormMB.id ? 'New Car' : 'Car '.concat(carFormMB.id)}" link="car-form.jsf?id=#{carFormMB.id}"/>
+        
         <h:form id="form" prependId="false">
             <p:focus rendered="#{empty carFormMB.id}"/>
 

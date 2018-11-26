@@ -6,7 +6,7 @@
                 template="#{layoutMB.template}">
 
     <ui:param name="title" value="Minhas Reservas"/> 
-
+	<ui:param name="renderBreadCrumb" value="false"/>
     <ui:define name="head-end">
         <style type="text/css">
             .ui-datatable .ui-datatable-header {
@@ -36,11 +36,10 @@
                 <div class="box-header with-border">
                     <div id="main-buttons" class="hidden-sm hidden-xs">
                         <p:commandButton value="Consultar" 
-                        				 action="#{usuarioFormMB.save}" 
+                        				 action="#{minhasReservasMB.consultaReserva}" 
                         				 update="@form"
-                                         icon="fa fa-check"
+                                         icon="fa fa-search"
                                          styleClass="btn-primary">
-                                         <p:ajax/>
                                          </p:commandButton>
                         <p:spacer width="5" rendered="#{usuarioFormMB.isNew()}"/>
 
@@ -54,7 +53,7 @@
                             <p:outputLabel value="Número de reserva" for="inptName"/>
                         </div>
                         <div class="ui-sm-12 ui-md-4 ui-lg-5" >
-                            <p:inputText id="inptName" value="#{usuarioFormMB.usuario.nome}"/>
+                            <p:inputText id="inptName" value="#{minhasReservasMB.id}"/>
                         </div>
                         
                                                 
@@ -63,36 +62,38 @@
                         </div>                                               
                         
                         <div class="ui-sm-12 ui-md-4 ui-lg-5" >
-                            <p:calendar id="inptDtLocacao" value="#{usuarioFormMB.usuario.email}"/>
+                            <p:calendar id="inptDtLocacao" value="#{minhasReservasMB.dataLocao}"/>
                         </div>																				
 					</div>
                 </div>
             </div>
 
-        </h:form>
-		<p:dataTable var="car" 
+				<p:dataTable var="reserva" 
 					 value="#{minhasReservasMB.reservas}"
 					 emptyMessage="Nenhuma reserva encontrada.">
 		    <p:column headerText="Número de Reserva">
-		        <h:outputText value="#{car.id}" />
+		        <h:outputText value="#{reserva.id}" />
 		    </p:column>
 		    
 		    <p:column headerText="Data da Reserva">
-		        <h:outputText value="#{car.id}" />
+		        <h:outputText value="#{reserva.dataLocacao}">
+		        <f:convertDateTime pattern="dd/MM/yyyy" />
+		        </h:outputText>
 		    </p:column>
 		 
 		    <p:column headerText="Grupo do Carro">
-		        <h:outputText value="#{car.id}" />
+		        <h:outputText value="#{reserva.grupoCarro}" />
 		    </p:column>
 		 
 		    <p:column headerText="Valor da Reserva">
-		        <h:outputText value="#{car.id}" />
+		        <h:outputText value="R$ #{reserva.valorReserva}" />
 		    </p:column>
 		 
 		    <p:column headerText="Status do Pagamento">
-		        <h:outputText value="#{car.id}" />
+		        <h:outputText value="#{reserva.statusPagamento}" />
 		    </p:column>
-		</p:dataTable>
+		</p:dataTable>	
+        </h:form>
 	</ui:define>
 
 </ui:composition>

@@ -1,12 +1,15 @@
 package br.com.unidas.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.type.descriptor.java.BigDecimalTypeDescriptor;
 
 @Entity
 @Table(name = "grupo_carros")
@@ -57,6 +60,9 @@ public class GrupoCarros implements Serializable, Comparable<GrupoCarros> {
 
 	@Column(name = "observacao")
 	private String observacao;
+	
+	@Column(name = "preco")
+	private BigDecimal preco;
 		
 	
 	public Long getId() {
@@ -214,10 +220,23 @@ public class GrupoCarros implements Serializable, Comparable<GrupoCarros> {
 	}
 
 
-
 	@Override
 	public int compareTo(GrupoCarros o) {
 		return this.id.compareTo(o.getId());
 	}
+
+
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+	
+	
 	
 }

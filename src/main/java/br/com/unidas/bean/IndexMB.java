@@ -9,9 +9,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import org.omnifaces.util.Faces;
+
 import br.com.unidas.entity.Endereco;
 import br.com.unidas.entity.Reserva;
+import br.com.unidas.entity.Usuario;
 import br.com.unidas.service.EnderecoService;
+import br.com.unidas.service.UsuarioService;
 
 @ManagedBean
 public class IndexMB {
@@ -19,6 +23,7 @@ public class IndexMB {
 	private List<String> images;
     private EnderecoService enderecoService = new EnderecoService();
     private Reserva reserva = new Reserva();
+    private UsuarioService usuarioService = new UsuarioService();
     
 	@PostConstruct
 	public void init() {
@@ -47,24 +52,19 @@ public class IndexMB {
     }
     
     public boolean validateReserva() {
-    	if (reserva.getDataDevolucao() == null) {
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de Devolução Obrigatória"));
-    		return false;
-		}else if (reserva.getDataDevolucao().before(new Date())) {
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de Devolução não pode ser anterior a data atual"));
-    		return false;			
-		}
     	
-    	if (reserva.getDataRetirada() == null) {
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de Retirada Obrigatória"));
-    		return false;
-		}else if (reserva.getDataDevolucao().before(new Date())) {
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de Devolução não pode ser inferior a data atual"));
-    		return false;			
-		}
+    	FacesContext context = FacesContext.getCurrentInstance();
     	
-    	if (reserva.getDataRetirada().before(reserva.getDataDevolucao())) {
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de Devolução não pode inferior a data de retirada"));
+    	String email = (String) context.getExternalContext().getSessionMap().get("email");
+    	
+
+        if (email == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Efetue o login para efetivar a reserva."));
+    		return false;
+        }
+    	
+    	if (reserva.getDataRetirada().after(reserva.getDataDevolucao())) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de devolução não pode inferior a data de retirada"));
     		return false;
 		}
     	
@@ -73,6 +73,22 @@ public class IndexMB {
 			return false;
 		}
     	
+    	if (reserva.getDataRetirada() == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de retirada Obrigatória"));
+    		return false;
+		}else if (reserva.getDataDevolucao().before(new Date())) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de devolução não pode ser inferior a data atual"));
+    		return false;			
+		}
+    	
+    	if (reserva.getDataDevolucao() == null) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de devolução Obrigatória"));
+    		return false;
+		}else if (reserva.getDataDevolucao().before(new Date())) {
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Data de devolução não pode ser anterior a data atual"));
+    		return false;			
+		}
+    	    
     	return true;
     }
     

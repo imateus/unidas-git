@@ -16,13 +16,14 @@
     <property name="format_sql">true</property>
 
     <!-- JDBC connection pool (use the built-in) -->
-    <property name="connection.pool_size">1</property>
+    <property name="connection.pool_size">100</property>
     <property name="current_session_context_class">thread</property>
 
     <!-- Mapping files will go here.... -->
     <mapping class="br.com.unidas.entity.Usuario" />
     <mapping class="br.com.unidas.entity.GrupoCarros" />
     <mapping class="br.com.unidas.entity.Endereco" />
+    <mapping class="br.com.unidas.entity.Reserva" />
 
 </session-factory>
 </hibernate-configuration>
